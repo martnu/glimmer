@@ -1,6 +1,6 @@
 function ssh_connection() {
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "%B%F{196}(ssh) %b%f"
+    echo "%B%F{196}(ssh) %b%f %F{white}%n@%2m%f"
   fi
 }
 
@@ -14,8 +14,7 @@ function my_git_prompt() {
   echo "%b%F{white}‹%B%F{yellow} $(git_prompt_info)$git_status %b%F{white}›%f"
 }
 
-PROMPT=$'\n$(ssh_connection)%F{white}%~ $(my_git_prompt) \n%B%F{236}›%f%b '
-RPROMPT='%B%F{236}%T%b %F{236}%n@%2m%f'
+PROMPT=$'\n$(ssh_connection)%F{white}%~ $(my_git_prompt) \n%B%F{236}$%f%b '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
